@@ -5,15 +5,17 @@
     "description": "__MSG_appDesc__",
     "default_locale": "en",
     "icons": {
-        "128": "icon/128.png",
-        "48": "icon/48.png",
-        "38": "icon/38.png",
+        "16": "icon/16.png",
         "19": "icon/19.png",
-        "16": "icon/16.png"
+        "38": "icon/38.png",
+        "48": "icon/48.png",
+        "128": "icon/128.png"
     },
     "author": "Joshua Butt",
     "browser_action": {
-        "default_icon": "icon/48.png",
+        "default_icon": {
+            "20": "icon/48.png"
+        },
         "default_popup": "html/popup.html"
     },
     "applications": {
@@ -24,14 +26,10 @@
     "permissions": [
         "storage"
     ],
-    "options_ui": {
-        "page": "html/options.html"
-    },
+    "options_page": "html/options.html",
     "background": {
-        "persistent": false,
-        "scripts": [
-            "js/background.js"
-        ]
+        "page": "background.html",
+        "persistent": true
     },
     "content_scripts": [
         {
@@ -242,5 +240,9 @@
                 "*imgres?*"
             ]
         }
-    ]
+    ],
+    "-ms-preload": {
+        "backgroundScript": "backgroundScriptsAPIBridge.js",
+        "contentScript": "contentScriptsAPIBridge.js"
+    }
 }
